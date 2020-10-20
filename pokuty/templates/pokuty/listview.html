@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Pokuty přehled</h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Datum</th>
+              <th>Jméno</th>
+              <th>Pokuta</th>
+              <th>Cena</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for record in records %}
+            <tr>
+              <th>{{record.penaltyDate}}</th>
+              <th>{{record.user}}</th>
+              <th>{{record.penaltyName}}</th>
+              <th>{{record.penaltyPrice}} Kč</th>
+            </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Příjmy přehled</h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Datum</th>
+              <th>Jméno</th>
+              <th>Cena</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for income in incomes %}
+            <tr>
+              <th>{{income.incomeDate}}</th>
+              <th>{{income.user}}</th>
+              <th>{{income.price}} Kč</th>
+            </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Výdaje přehled</h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Datum</th>
+              <th>Důvod</th>
+              <th>Částka</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for expense in expenses %}
+            <tr>
+              <th>{{expense.expenseDate}}</th>
+              <th>{{expense.reason}}</th>
+              <th>{{expense.price}} Kč</th>
+            </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+{% endblock %}

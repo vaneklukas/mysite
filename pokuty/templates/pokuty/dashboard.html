@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hello, {{ user.get_username }}!
+Hello, {{ user.get_full_name }}!
+Hello, {{ user.get_second_name }}!
+Hello, {{ user.get_user_id }}!
+
+<div>
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'password_change' %}">Change password</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</div> -->
+
+<!-- Content Row -->
+<div class="row">
+ {% comment %} <a href="{% url 'password_change' %}">Change password</a>
+ <a href="{% url 'password_reset' %}">Reset password</a> {% endcomment %}
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Stav pokladny</div>
+                        
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{bank}} Kč</div>
+                        
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+          <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Dluhy</div>
+                               
+                            {% for key, value in notpay.items %}
+                                {% if  value is  None%}
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">0 Kč</div>
+                                {% else %}
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{value}} Kč</div>
+                                {% endif %}
+                            {% endfor %}
+                        
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Celkové příjmy</div>
+                        {% for key, value in income.items %}
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{value}} Kč</div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Celkové výdaje</div>
+                        {% for key, value in expenses.items %}
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{value}} Kč</div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
